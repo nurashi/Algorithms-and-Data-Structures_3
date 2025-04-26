@@ -1,48 +1,28 @@
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        MyHashTable<String, Integer> table = new MyHashTable<>(7);
+        MyHashTable<MyTestingClass, Integer> table = new MyHashTable<>(100); 
+        Random random = new Random();
 
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("dada", 100);
-        table.put("data", 200);
-        table.put("123", 300);
-        
-        table.put("fgh", 250);
-            
-        // table.printTable();
-        
-        // System.out.println(table.get("banana"));
-        // System.out.println(table.get("apple"));
-        
+        for (int i = 0; i < 10000; i++) {
+            int randomId = random.nextInt(100000); 
+            table.put(new MyTestingClass(randomId), i);
+        }
 
-        // System.out.println(table.get("notExist"));
+        int[] arr = new int[100];
+        for (int i = 0; i < 100; i++) {
+            int count = 0;
+            MyHashTable<MyTestingClass, Integer>.HashNode<MyTestingClass, Integer> node = table.chainArray[i];
+            while (node != null) {
+                count++;
+                node = node.next;
+            }
+            arr[i] = count;
+        }
 
-        // System.out.println(table.remove("apple"));
-        
-        // System.out.println(table.remove("notExist"));
-        
-        // table.printTable();
-
-        // System.out.println(table.contains(250));
-        // System.out.println(table.contains(999));
-
-        
-        //System.out.println(table.getKey(250));
-//        System.out.println(table.getKey(300));
-
-
-
-        table.printTable();
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("Bucket " + i + ": " + arr[i] + " elements");
+        }
     }
 }

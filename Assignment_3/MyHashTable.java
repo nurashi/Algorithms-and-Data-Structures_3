@@ -1,7 +1,7 @@
 public class MyHashTable<K, V> {
-    private HashNode<K, V>[] chainArray;
-    private int M = 11;  // its a copacity
-    private int size;
+    public HashNode<K, V>[] chainArray;
+    public int M = 11;  // its a copacity
+    public int size;
 
     public class HashNode<K, V> {
         public K key;

@@ -1,21 +1,26 @@
 public class MyTestingClass {
     private int id;
-    private String name;
 
-    public MyTestingClass(int id, String name) {
+    public MyTestingClass(int id) {
         this.id = id;
-        this.name = name;
     }
 
-    // defult custom of hash code, when prime number used to hash 
+    public int getId() {
+        return id;
+    }
+    
     @Override
     public int hashCode() {
-        int result = 19;
-        result = 31 * result + id; 
-        for (char c : name.toCharArray()) {
-            result = 31 * result + c;
-        }
-        return result;
+        int hash = 0; 
+        hash = 31 * hash + id;
+        return hash;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        MyTestingClass other = (MyTestingClass) obj;
+        return this.id == other.id;
+    }
 }
