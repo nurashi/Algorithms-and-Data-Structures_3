@@ -22,7 +22,24 @@ public class Main {
         }
 
         for (int i = 0; i < arr.length; i++) {
-            System.out.println("Bucket " + i + ": " + arr[i] + " elements");
+        //    System.out.println(arr[i]);
         }
+
+
+
+
+        BST<Integer, String> tree = new BST<>();
+        tree.put(5, "data");
+        tree.put(2, "tata");
+        tree.put(8, "qweqwe");
+        tree.put(1, "zxczxc");
+        tree.put(3, "asdasd");
+
+        System.out.println(tree.size());
+
+        for (var elem : tree) {
+            System.out.println(elem.getKey() + " - " + elem.getValue());
+        }
+
     }
 }
