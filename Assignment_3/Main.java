@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        MyHashTable<MyTestingClass, Integer> table = new MyHashTable<>(100); 
+        MyHashTable<MyTestingClass, Integer> table = new MyHashTable<>(100);
         Random random = new Random();
 
         for (int i = 0; i < 10000; i++) {
-            int randomId = random.nextInt(100000); 
+            int randomId = random.nextInt(100000);
             table.put(new MyTestingClass(randomId), i);
         }
 
@@ -22,30 +22,27 @@ public class Main {
         }
 
         for (int i = 0; i < arr.length; i++) {
-        //    System.out.println(arr[i]);
+            // System.out.println(arr[i]);
         }
-
-
-
 
         BST<Integer, String> bst = new BST<>();
 
-        bst.put(5, "qwe");
-        bst.put(3, "zxc");
-        bst.put(7, "asd");
-        bst.put(1, "123");
-        bst.put(4, "!@$");
-        System.out.println(bst.get(5)); 
+        bst.put(15, "xyz");
+        bst.put(5, "pqr");
+        bst.put(20, "stu");
+        bst.put(3, "vwx");
+        bst.put(10, "bcd");
+        System.out.println(bst.get(15));
+        System.out.println(bst.get(5));
+        System.out.println(bst.get(20));
         System.out.println(bst.get(3));
-        System.out.println(bst.get(7));
-        System.out.println(bst.get(1));
-        System.out.println(bst.get(4));
         System.out.println(bst.get(10));
+        System.out.println(bst.get(7));
 
         System.out.println();
         System.out.println();
         System.out.println();
-        Iterable<Integer> keys = bst.iterator();
+        Iterable<Integer> keys = bst;
         for (Integer key : keys) {
             System.out.print(key + " ");
         }
@@ -55,12 +52,12 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        bst.delete(3); 
-        System.out.println(bst.get(3)); 
-        bst.delete(7); 
-        System.out.println(bst.get(7)); 
-        bst.delete(1);
-        System.out.println(bst.get(1));
+        bst.delete(5);
+        System.out.println(bst.get(5));
+        bst.delete(20);
+        System.out.println(bst.get(20));
+        bst.delete(10);
+        System.out.println(bst.get(10));
 
         System.out.println();
         System.out.println();
@@ -68,7 +65,7 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        keys = bst.iterator();
+        keys = bst;
         for (Integer key : keys) {
             System.out.print(key + " ");
         }

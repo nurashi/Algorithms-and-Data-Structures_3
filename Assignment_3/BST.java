@@ -1,5 +1,10 @@
-public class BST<K extends Comparable<K>, V> {
+import java.util.LinkedList;
+import java.util.Stack;
+import java.util.Iterator;
+
+public class BST<K extends Comparable<K>, V> implements Iterable<K> {
     private Node root;
+    private int size = 0;
 
     private class Node {
         private K key;
@@ -15,6 +20,7 @@ public class BST<K extends Comparable<K>, V> {
     public void put(K key, V val) {
         if (root == null) {
             root = new Node(key, val);
+            size++;
             return;
         }
         Node current = root;
@@ -23,12 +29,14 @@ public class BST<K extends Comparable<K>, V> {
             if (cmp < 0) {
                 if (current.left == null) {
                     current.left = new Node(key, val);
+                    size++;
                     break;
                 }
                 current = current.left;
             } else if (cmp > 0) {
                 if (current.right == null) {
                     current.right = new Node(key, val);
+                    size++;
                     break;
                 }
                 current = current.right;
@@ -110,11 +118,13 @@ public class BST<K extends Comparable<K>, V> {
                 minParent.right = min.right;
             }
         }
+        size--;
     }
 
-    public Iterable<K> iterator() {
-        java.util.LinkedList<K> keys = new java.util.LinkedList<>();
-        java.util.Stack<Node> stack = new java.util.Stack<>();
+    @Override
+    public Iterator<K> iterator() {
+        LinkedList<K> keys = new LinkedList<>();
+        Stack<Node> stack = new Stack<>();
         Node current = root;
         while (current != null || !stack.isEmpty()) {
             while (current != null) {
@@ -125,6 +135,6 @@ public class BST<K extends Comparable<K>, V> {
             keys.add(current.key);
             current = current.right;
         }
-        return keys;
+        return keys.iterator();
     }
 }
