@@ -28,18 +28,50 @@ public class Main {
 
 
 
-        BST<Integer, String> tree = new BST<>();
-        tree.put(5, "data");
-        tree.put(2, "tata");
-        tree.put(8, "qweqwe");
-        tree.put(1, "zxczxc");
-        tree.put(3, "asdasd");
+        BST<Integer, String> bst = new BST<>();
 
-        System.out.println(tree.size());
+        bst.put(5, "qwe");
+        bst.put(3, "zxc");
+        bst.put(7, "asd");
+        bst.put(1, "123");
+        bst.put(4, "!@$");
+        System.out.println(bst.get(5)); 
+        System.out.println(bst.get(3));
+        System.out.println(bst.get(7));
+        System.out.println(bst.get(1));
+        System.out.println(bst.get(4));
+        System.out.println(bst.get(10));
 
-        for (var elem : tree) {
-            System.out.println(elem.getKey() + " - " + elem.getValue());
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        Iterable<Integer> keys = bst.iterator();
+        for (Integer key : keys) {
+            System.out.print(key + " ");
         }
+        System.out.println();
 
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        bst.delete(3); 
+        System.out.println(bst.get(3)); 
+        bst.delete(7); 
+        System.out.println(bst.get(7)); 
+        bst.delete(1);
+        System.out.println(bst.get(1));
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        keys = bst.iterator();
+        for (Integer key : keys) {
+            System.out.print(key + " ");
+        }
+        System.out.println();
     }
 }

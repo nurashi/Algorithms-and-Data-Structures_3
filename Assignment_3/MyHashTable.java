@@ -122,9 +122,13 @@ public class MyHashTable<K, V> {
         return size;
     }
 
+
+
+
+    // its a just to be confident, to all data in
     public void printTable() {
         for (int i = 0; i < M; i++) {
-            System.out.print("[" + i + "]: ");
+            System.out.print(i + " -> ");
             HashNode<K, V> node = chainArray[i];
             while (node != null) {
                 System.out.print(node + " -> ");
