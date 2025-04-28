@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.Stack;
 import java.util.Iterator;
 
-public class BST<K extends Comparable<K>, V> implements Iterable<K> {
+public class BST<K extends Comparable<K>, V> implements Iterable<BST.Pair<K, V>> {
     private Node root;
     private int size = 0;
 
@@ -14,6 +14,24 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
         public Node(K key, V val) {
             this.key = key;
             this.val = val;
+        }
+    }
+
+    public static class Pair<K, V> {
+        private final K key;
+        private final V value;
+
+        public Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public K getKey() {
+            return key;
+        }
+
+        public V getValue() {
+            return value;
         }
     }
 
@@ -122,8 +140,8 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
     }
 
     @Override
-    public Iterator<K> iterator() {
-        LinkedList<K> keys = new LinkedList<>();
+    public Iterator<Pair<K, V>> iterator() {
+        LinkedList<Pair<K, V>> pairs = new LinkedList<>();
         Stack<Node> stack = new Stack<>();
         Node current = root;
         while (current != null || !stack.isEmpty()) {
@@ -132,9 +150,9 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
                 current = current.left;
             }
             current = stack.pop();
-            keys.add(current.key);
+            pairs.add(new Pair<>(current.key, current.val));
             current = current.right;
         }
-        return keys.iterator();
+        return pairs.iterator();
     }
 }

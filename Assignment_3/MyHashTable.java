@@ -19,7 +19,6 @@ public class MyHashTable<K, V> {
         }
     }
 
-
     public MyHashTable() {
         chainArray = new HashNode[M];
         size = 0;

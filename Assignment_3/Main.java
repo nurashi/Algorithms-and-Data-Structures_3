@@ -28,7 +28,7 @@ public class Main {
         BST<Integer, String> bst = new BST<>();
 
         bst.put(15, "xyz");
-        bst.put(5, "pqr");
+        bst.put(5, "zxc");
         bst.put(20, "stu");
         bst.put(3, "vwx");
         bst.put(10, "bcd");
@@ -42,9 +42,9 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println();
-        Iterable<Integer> keys = bst;
-        for (Integer key : keys) {
-            System.out.print(key + " ");
+        Iterable<BST.Pair<Integer, String>> pairs = bst;
+        for (BST.Pair<Integer, String> pair : pairs) {
+            System.out.print(pair.getKey() + ":" + pair.getValue() + " ");
         }
         System.out.println();
 
@@ -65,9 +65,9 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        keys = bst;
-        for (Integer key : keys) {
-            System.out.print(key + " ");
+        pairs = bst;
+        for (BST.Pair<Integer, String> pair : pairs) {
+            System.out.print(pair.getKey() + ":" + pair.getValue() + " ");
         }
         System.out.println();
     }
